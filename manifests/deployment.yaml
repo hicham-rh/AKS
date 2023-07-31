@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-workflow
+  labels:
+    app: test-workflow
+  namespace: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-workflow
+  template:
+    metadata:
+      labels:
+        app: test-workflow
+    spec:
+      containers:
+        - name: test-workflow
+          image: registrycbi.azurecr.io/helloworld:latest
+          ports:
+            - containerPort: 8000
